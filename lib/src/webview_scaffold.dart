@@ -38,6 +38,7 @@ class WebviewScaffold extends StatefulWidget {
     this.resizeToAvoidBottomInset = false,
     this.invalidUrlRegex,
     this.geolocationEnabled,
+    this.takeControl = true,
     this.debuggingEnabled = false,
   }) : super(key: key);
 
@@ -69,6 +70,7 @@ class WebviewScaffold extends StatefulWidget {
   final bool geolocationEnabled;
   final bool withOverviewMode;
   final bool useWideViewPort;
+  final bool takeControl;
   final bool debuggingEnabled;
 
   @override
@@ -88,31 +90,33 @@ class _WebviewScaffoldState extends State<WebviewScaffold> {
     super.initState();
     webviewReference.close();
 
-    _onBack = webviewReference.onBack.listen((_) async {
-      if (!mounted) {
-        return;
-      }
-
-      // The willPop/pop pair here is equivalent to Navigator.maybePop(),
-      // which is what's called from the flutter back button handler.
-      final pop = await _topMostRoute.willPop();
-      if (pop == RoutePopDisposition.pop) {
-        // Close the webview if it's on the route at the top of the stack.
-        final isOnTopMostRoute = _topMostRoute == ModalRoute.of(context);
-        if (isOnTopMostRoute) {
-          webviewReference.close();
+    if (widget.takeControl) {
+      _onBack = webviewReference.onBack.listen((_) async {
+        if (!mounted) {
+          return;
         }
-        Navigator.pop(context);
-      }
-    });
 
-    if (widget.hidden) {
-      _onStateChanged =
-          webviewReference.onStateChanged.listen((WebViewStateChanged state) {
-        if (state.type == WebViewState.finishLoad) {
-          webviewReference.show();
+        // The willPop/pop pair here is equivalent to Navigator.maybePop(),
+        // which is what's called from the flutter back button handler.
+        final pop = await _topMostRoute.willPop();
+        if (pop == RoutePopDisposition.pop) {
+          // Close the webview if it's on the route at the top of the stack.
+          final isOnTopMostRoute = _topMostRoute == ModalRoute.of(context);
+          if (isOnTopMostRoute) {
+            webviewReference.close();
+          }
+          Navigator.pop(context);
         }
       });
+
+      if (widget.hidden) {
+        _onStateChanged =
+            webviewReference.onStateChanged.listen((WebViewStateChanged state) {
+          if (state.type == WebViewState.finishLoad) {
+            webviewReference.show();
+          }
+        });
+      }
     }
   }
 
@@ -129,12 +133,14 @@ class _WebviewScaffoldState extends State<WebviewScaffold> {
   @override
   void dispose() {
     super.dispose();
-    _onBack?.cancel();
+    if (widget.takeControl) {
+      _onBack?.cancel();
+      if (widget.hidden) {
+        _onStateChanged.cancel();
+      }
+    }
     _resizeTimer?.cancel();
     webviewReference.close();
-    if (widget.hidden) {
-      _onStateChanged.cancel();
-    }
     webviewReference.dispose();
   }
 
