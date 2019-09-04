@@ -361,6 +361,8 @@ class WebviewManager {
             boolean withOverviewMode,
             boolean scrollBar,
             boolean supportMultipleWindows,
+            boolean verticalScrollBarEnabled,
+            boolean horizontalScrollBarEnabled,
             boolean appCacheEnabled,
             boolean allowFileURLs,
             boolean useWideViewPort,
@@ -385,6 +387,9 @@ class WebviewManager {
         webView.getSettings().setAllowUniversalAccessFromFileURLs(allowFileURLs);
 
         webView.getSettings().setUseWideViewPort(useWideViewPort);
+
+        webView.setHorizontalScrollBarEnabled(horizontalScrollBarEnabled);
+        webView.setVerticalScrollBarEnabled(verticalScrollBarEnabled);
 
         // Handle debugging
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

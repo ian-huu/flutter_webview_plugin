@@ -101,6 +101,8 @@ public class FlutterWebviewPlugin implements MethodCallHandler, PluginRegistry.A
         boolean withLocalStorage = call.argument("withLocalStorage");
         boolean withOverviewMode = call.argument("withOverviewMode");
         boolean supportMultipleWindows = call.argument("supportMultipleWindows");
+        boolean verticalScrollBarEnabled = call.argument("verticalScrollBarEnabled");
+        boolean horizontalScrollBarEnabled = call.argument("horizontalScrollBarEnabled");
         boolean appCacheEnabled = call.argument("appCacheEnabled");
         Map<String, String> headers = call.argument("headers");
         boolean scrollBar = call.argument("scrollBar");
@@ -137,6 +139,8 @@ public class FlutterWebviewPlugin implements MethodCallHandler, PluginRegistry.A
                 withOverviewMode,
                 scrollBar,
                 supportMultipleWindows,
+                verticalScrollBarEnabled,
+                horizontalScrollBarEnabled,
                 appCacheEnabled,
                 allowFileURLs,
                 useWideViewPort,
