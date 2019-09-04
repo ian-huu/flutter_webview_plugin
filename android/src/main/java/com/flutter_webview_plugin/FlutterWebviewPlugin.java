@@ -96,7 +96,7 @@ public class FlutterWebviewPlugin implements MethodCallHandler, PluginRegistry.A
         boolean clearCache = call.argument("clearCache");
         boolean clearCookies = call.argument("clearCookies");
         boolean withZoom = call.argument("withZoom");
-        boolean textZoom = call.argument("textZoom");
+        int textZoom = call.argument("textZoom");
         boolean displayZoomControls = call.argument("displayZoomControls");
         boolean withLocalStorage = call.argument("withLocalStorage");
         boolean withOverviewMode = call.argument("withOverviewMode");
