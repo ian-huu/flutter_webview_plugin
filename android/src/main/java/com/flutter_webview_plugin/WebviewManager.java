@@ -389,6 +389,7 @@ class WebviewManager {
 
         webView.getSettings().setUseWideViewPort(useWideViewPort);
 
+        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET);
         webView.setHorizontalScrollBarEnabled(horizontalScrollBarEnabled);
         webView.setVerticalScrollBarEnabled(verticalScrollBarEnabled);
 
