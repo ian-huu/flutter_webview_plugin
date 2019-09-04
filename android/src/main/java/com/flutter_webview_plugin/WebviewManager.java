@@ -355,6 +355,7 @@ class WebviewManager {
             String url,
             Map<String, String> headers,
             boolean withZoom,
+            int     textZoom,
             boolean displayZoomControls,
             boolean withLocalStorage,
             boolean withOverviewMode,
@@ -370,6 +371,7 @@ class WebviewManager {
         webView.getSettings().setJavaScriptEnabled(withJavascript);
         webView.getSettings().setBuiltInZoomControls(withZoom);
         webView.getSettings().setSupportZoom(withZoom);
+        webView.getSettings().setTextZoom(textZoom);
         webView.getSettings().setDisplayZoomControls(displayZoomControls);
         webView.getSettings().setDomStorageEnabled(withLocalStorage);
         webView.getSettings().setLoadWithOverviewMode(withOverviewMode);
