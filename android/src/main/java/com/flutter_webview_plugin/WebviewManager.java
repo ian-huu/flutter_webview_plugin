@@ -363,6 +363,7 @@ class WebviewManager {
             boolean supportMultipleWindows,
             boolean verticalScrollBarEnabled,
             boolean horizontalScrollBarEnabled,
+            boolean longClickEnabled,
             boolean appCacheEnabled,
             boolean allowFileURLs,
             boolean useWideViewPort,
@@ -404,6 +405,16 @@ class WebviewManager {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
+        }
+
+        if (longClickEnabled) {
+            webView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return true;
+                }
+                });
+            webView.setLongClickable(false);
         }
 
         if (clearCache) {

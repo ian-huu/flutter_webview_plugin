@@ -34,6 +34,7 @@ class WebviewScaffold extends StatefulWidget {
     this.supportMultipleWindows,
     this.verticalScrollBarEnabled,
     this.horizontalScrollBarEnabled,
+    this.longClickEnabled,
     this.appCacheEnabled,
     this.hidden = false,
     this.initialChild,
@@ -67,6 +68,7 @@ class WebviewScaffold extends StatefulWidget {
   final bool supportMultipleWindows;
   final bool verticalScrollBarEnabled;
   final bool horizontalScrollBarEnabled;
+  final bool longClickEnabled;
   final bool appCacheEnabled;
   final bool hidden;
   final Widget initialChild;
@@ -184,6 +186,7 @@ class _WebviewScaffoldState extends State<WebviewScaffold> {
               supportMultipleWindows: widget.supportMultipleWindows,
               verticalScrollBarEnabled: widget.verticalScrollBarEnabled,
               horizontalScrollBarEnabled: widget.horizontalScrollBarEnabled,
+              longClickEnabled: widget.longClickEnabled,
               appCacheEnabled: widget.appCacheEnabled,
               allowFileURLs: widget.allowFileURLs,
               invalidUrlRegex: widget.invalidUrlRegex,
