@@ -6,6 +6,7 @@
 .pub/
 .project/
 .project
+.classpath
 .settings/
 build/
 ios/.generated/
