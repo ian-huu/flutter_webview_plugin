@@ -40,6 +40,7 @@ class WebviewScaffold extends StatefulWidget {
     this.initialChild,
     this.allowFileURLs,
     this.resizeToAvoidBottomInset = false,
+    this.backgroundColor = const Color.fromRGBO(255, 255, 255, 0),
     this.invalidUrlRegex,
     this.geolocationEnabled,
     this.takeControl = true,
@@ -74,6 +75,7 @@ class WebviewScaffold extends StatefulWidget {
   final Widget initialChild;
   final bool allowFileURLs;
   final bool resizeToAvoidBottomInset;
+  final Color backgroundColor;
   final String invalidUrlRegex;
   final bool geolocationEnabled;
   final bool withOverviewMode;
@@ -157,6 +159,7 @@ class _WebviewScaffoldState extends State<WebviewScaffold> {
     return Scaffold(
       appBar: widget.appBar,
       resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
+      backgroundColor: widget.backgroundColor,
       persistentFooterButtons: widget.persistentFooterButtons,
       bottomNavigationBar: widget.bottomNavigationBar,
       body: _WebviewPlaceholder(
