@@ -19,6 +19,7 @@ class WebviewScaffold extends StatefulWidget {
     this.clearCookies,
     this.enableAppScheme,
     this.userAgent,
+    this.appendUserAgent,
     this.primary = true,
     this.persistentFooterButtons,
     this.bottomNavigationBar,
@@ -56,6 +57,7 @@ class WebviewScaffold extends StatefulWidget {
   final bool clearCookies;
   final bool enableAppScheme;
   final String userAgent;
+  final String appendUserAgent;
   final bool primary;
   final List<Widget> persistentFooterButtons;
   final Widget bottomNavigationBar;
@@ -176,6 +178,7 @@ class _WebviewScaffoldState extends State<WebviewScaffold> {
               hidden: widget.hidden,
               enableAppScheme: widget.enableAppScheme,
               userAgent: widget.userAgent,
+              appendUserAgent: widget.appendUserAgent,
               rect: _rect,
               withZoom: widget.withZoom,
               textZoom: widget.textZoom,

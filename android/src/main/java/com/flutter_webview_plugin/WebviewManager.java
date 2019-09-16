@@ -352,6 +352,7 @@ class WebviewManager {
             boolean hidden,
             boolean clearCookies,
             String userAgent,
+            String appendUserAgent,
             String url,
             Map<String, String> headers,
             boolean withZoom,
@@ -432,6 +433,11 @@ class WebviewManager {
 
         if (userAgent != null) {
             webView.getSettings().setUserAgentString(userAgent);
+        }
+
+        if (appendUserAgent != null) {
+            String ua = webView.getSettings().getUserAgentString();
+            webView.getSettings().setUserAgentString(ua + " " + appendUserAgent);
         }
 
         if (!scrollBar) {

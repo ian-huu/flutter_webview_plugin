@@ -92,6 +92,7 @@ public class FlutterWebviewPlugin implements MethodCallHandler, PluginRegistry.A
         boolean hidden = call.argument("hidden");
         String url = call.argument("url");
         String userAgent = call.argument("userAgent");
+        String appendUserAgent = call.argument("appendUserAgent");
         boolean withJavascript = call.argument("withJavascript");
         boolean clearCache = call.argument("clearCache");
         boolean clearCookies = call.argument("clearCookies");
@@ -131,6 +132,7 @@ public class FlutterWebviewPlugin implements MethodCallHandler, PluginRegistry.A
                 hidden,
                 clearCookies,
                 userAgent,
+                appendUserAgent,
                 url,
                 headers,
                 withZoom,
